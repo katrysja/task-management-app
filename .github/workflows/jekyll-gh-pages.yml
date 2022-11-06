@@ -4,7 +4,10 @@ name: Deploy Jekyll with GitHub Pages dependencies preinstalled
 on:
   # Runs on pushes targeting the default branch
   push:
-    branches: ["master"]
+    branches: ["master"]- name: npm setup
+  uses: ng-easy/npm-setup@v1.7.2
+  with:
+    nx-key: # optional
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -25,17 +28,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-      - name: Setup Pages
-        uses: actions/configure-pages@v2
-      - name: Build with Jekyll
-        uses: actions/jekyll-build-pages@v1
+      - name: npm setup
+        uses: ng-easy/npm-setup@v1.7.2
         with:
-          source: ./
-          destination: ./_site
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v1
+          nx-key: # optional
 
   # Deployment job
   deploy:
