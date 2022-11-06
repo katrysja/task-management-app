@@ -1,0 +1,38 @@
+/* Importing Bootstrap SCSS file. */
+@import "~bootstrap/scss/bootstrap";
+
+/* Importing Bootstrap SCSS file. */
+@import "~bootstrap/scss/bootstrap";
+
+/* Importing Bootstrap SCSS file. */
+@import "~bootstrap/scss/bootstrap";
+
+/* Importing Bootstrap SCSS file. */
+@import "~bootstrap/scss/bootstrap";
+
+.gradient-custom {
+  background: rgb(210, 176, 253);
+  background: -webkit-linear-gradient(
+      to right,
+      rgb(210, 176, 253),
+      rgb(164, 196, 255)
+  );
+  background: linear-gradient(
+      to right,
+      rgb(210, 176, 253),
+      rgb(164, 196, 255)
+  );
+}
+
+.text-info:hover {
+  background: rgba(118, 150, 155, 0.18);
+}
+
+.text-info:active {
+  background: rgba(100, 149, 237, 0.35);
+  transform: scale(0.95);
+}
+
+.active {
+  background: rgba(59, 70, 138, 0.35);
+}

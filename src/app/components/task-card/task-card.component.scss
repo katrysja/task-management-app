@@ -1,0 +1,16 @@
+:host {
+    width: 100%;
+
+    background-color: #EFEFEF;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+
+    margin: 10px;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    min-height: 100px;
+}

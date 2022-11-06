@@ -1,0 +1,19 @@
+<form [formGroup]="form" (ngSubmit)="onSaveClick()">
+    <h2>Board</h2>
+    <div>
+        <label for="name">Name:
+            <input id="name" [value]="board.name" formControlName="name">
+        </label>
+    </div>
+    <div>
+        <label for="description">Description:
+            <input id="description"
+                   formControlName="description"
+                   [value]="board.description"
+                   [attr.disabled]="isDescriptionDisabled ? 'disabled': null">
+        </label>
+    </div>
+
+    <button type="button" (click)="onCloseClick()">Cancel</button>
+    <button type="submit">Save</button>
+</form>

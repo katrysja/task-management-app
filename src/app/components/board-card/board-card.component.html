@@ -1,0 +1,9 @@
+<button (click)="onOpenClick()">
+    <div>{{ board.name }}</div>
+    <small>{{ board.createdAt | date }}</small>
+
+    <div>
+        <button (click)="onPatchClick($event)">✍</button>
+        <button (click)="onDeleteClick($event)">🗑</button>
+    </div>
+</button>

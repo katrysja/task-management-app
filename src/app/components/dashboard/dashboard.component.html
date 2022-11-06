@@ -1,0 +1,49 @@
+<section class="dashboard">
+    <header>
+        <h1 class="dashboard__title">Dashboard</h1>
+
+        <div class="dashboard-search">
+            <input  class="dashboard__search-input"  id="input-search" #filterInput placeholder="Filter" (keyup)="onFilterChange()"/>
+
+            <select #sortTypeSelect>
+                <option value="name">Name</option>
+                <option value="createdAt">Date of creation</option>
+                <option value="newTasks">Number of new task</option>
+                <option value="tasksInProgress">Number of in progress</option>
+                <option value="tasksDone">Number of done</option>
+            </select>
+
+            <button  class="button dashboard__button" id="sortButton"  (click)="onSortClick('ascending')">Asc</button>
+            <button class="button dashboard__button" (click)="onSortClick('descending')">Desc</button>
+        </div>
+    </header>
+
+    <main class="main">
+      <button  class="button--create" id="createButton" (click)="onCreateClick()">
+        <img src="https://img.icons8.com/nolan/64/plus-2-math.png"/>
+        <div class="button--create__description">Add new</div>
+      </button>
+
+      <ng-container class="board-container" *ngFor="let board of (boards$ | async | boardFilter:filterInput.value)">
+        <app-board-card class="board"
+            [id]="board.id"
+            [board]="board"
+
+            (open)="onOpenClick($event)"
+            (patch)="onPatchClick($event)"
+            (delete)="onDeleteClick($event)"
+        ></app-board-card>
+      </ng-container>
+    </main>
+
+    <app-board-modal
+            class="modal-board"
+            id="createModal"
+            *ngIf="isModalVisible"
+            [board]="selectedBoard"
+            (close)="onModalClose()"
+            (save)="onModalSave($event)"
+    ></app-board-modal>
+</section>
+
+

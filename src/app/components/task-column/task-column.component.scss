@@ -1,0 +1,30 @@
+.tasks-column {
+    width: 300px;
+    min-height: 600px;
+    background-color: #d5d5d5;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.tasks-todo {
+    background-color: #fac6c6;
+}
+
+.tasks-in-progress {
+    background-color: #ffffc6;
+}
+
+.tasks-done {
+    background-color: #d0ffd0;
+}
+
+.drag-target {
+    outline: dashed gray 3px;
+}
+
+.flex-column {
+    display: flex;
+}

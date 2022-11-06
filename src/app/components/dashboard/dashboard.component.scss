@@ -1,0 +1,50 @@
+button , .button {
+    cursor: pointer;
+
+}
+
+.dashboard {
+    padding: 1rem 2rem;
+    text-align: center;
+    font-size: 16px;
+    background-color: #e4bfe8;
+    display: flex;
+    flex-direction: column;
+    &-__title {
+        font-size: 2rem;
+        font-style: italic;
+    }
+
+}
+
+.dashboard-search {
+    padding: 1rem;
+    display: flex;
+    align-content: flex-end;
+    justify-content: space-evenly;
+}
+.main {
+    display: flex;
+    justify-content: space-around;
+
+}
+.board-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    padding-left: 0.5rem;
+
+}
+
+.board {
+    display: flex;
+    padding: 0.3rem;
+}
+.modal-board {
+    border-radius: 5%;
+    border: 1px solid blue;
+    display: flex;
+    flex-direction: column;
+    padding: 0.5rem 1rem;
+    flex-basis: 50%;
+}

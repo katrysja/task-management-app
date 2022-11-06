@@ -1,0 +1,37 @@
+[
+  {
+    "id": 0,
+    "createdAt": "2022-10-15T00:00:00.000Z",
+    "name": "Test Task 0",
+    "status": "todo",
+    "boardId": 2
+  },
+  {
+    "id": 1,
+    "createdAt": "2022-10-15T00:00:00.000Z",
+    "name": "Test Task 1",
+    "status": "in-progress",
+    "boardId": 1
+  },
+  {
+    "id": 2,
+    "createdAt": "2022-10-15T00:00:00.000Z",
+    "name": "Test Task 2",
+    "status": "todo",
+    "boardId": 0
+  },
+  {
+    "id": 3,
+    "createdAt": "2022-10-15T00:00:00.000Z",
+    "name": "Test Task 3",
+    "status": "in-progress",
+    "boardId": 1
+  },
+  {
+    "id": 4,
+    "createdAt": "2022-10-15T00:00:00.000Z",
+    "name": "Test Task 4",
+    "status": "done",
+    "boardId": 4
+  }
+]

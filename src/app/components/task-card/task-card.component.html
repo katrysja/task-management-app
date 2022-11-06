@@ -1,0 +1,20 @@
+<ng-container>
+    <div class="wrapper"
+         draggable="true"
+
+         (dragend)="onDragEnd()"
+    >
+        <div>
+            <div>{{ task.name }}</div>
+        </div>
+        <div>
+            <div>Comments: {{ task.comments.length }}</div>
+        </div>
+
+        <div>
+            <button (click)="onPatchClick()">✍</button>
+            <button (click)="onArchiveClick()">📦</button>
+            <button (click)="onDeleteClick()">🗑</button>
+        </div>
+    </div>
+</ng-container>
