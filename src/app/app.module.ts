@@ -41,8 +41,12 @@ import { ByFilterPipe } from './pipe/byFilter.pipe';
         ReactiveFormsModule,
         HttpClientModule
     ],
-    providers: [HttpClient],
-    bootstrap: [AppComponent]
+    providers: [
+        HttpClient
+    ],
+    bootstrap: [
+        AppComponent
+    ]
 })
 export class AppModule {
 }
