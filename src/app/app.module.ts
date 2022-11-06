@@ -14,7 +14,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { TaskCardComponent } from './components/task-card/task-card.component';
 import { TaskColumnComponent } from './components/task-column/task-column.component';
 import { TaskModalComponent } from './components/task-modal/task-modal.component';
-import { NavigationComponent } from 'src/app/components/navigation/navigation.component';
+import { NavigationComponent } from './components/navigation/navigation.component';
 
 import { BoardFilterPipe } from './pipe/boardFilter.pipe';
 import { ByFilterPipe } from './pipe/byFilter.pipe';
