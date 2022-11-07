@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 
 import { BehaviorSubject, Observable } from 'rxjs';
 
+import { environment } from 'src/environments/environment';
+
 import { ESortDirection } from '../enum/eSortDirection';
 import { ESortType } from '../enum/eSortType';
 import { ITask } from '../interfaces/iTask';
@@ -24,7 +26,7 @@ export class TaskService {
     }
     
     get(): void {
-        this.http.get<ITask[]>(`http://localhost:3000/tasks?_embed=comments&_expand=board&archive=false`)
+        this.http.get<ITask[]>(`${environment.backendURL}/tasks?_embed=comments&_expand=board&archive=false`)
             .subscribe((tasks: ITask[]) => {
                 // this.addCommentsGetter(tasks);
                 tasks = tasks.filter(task => !task.deleted);
@@ -35,7 +37,7 @@ export class TaskService {
     
     post(task: ITask): void {
         this.http.post<ITask>(
-            `http://localhost:3000/tasks`,
+            `${environment.backendURL}/tasks`,
             task
         ).subscribe((task: ITask) => {
             // this.tasks just a getter!
@@ -50,7 +52,7 @@ export class TaskService {
     
     patch(id: number, task: ITask): void {
         this.http.patch<ITask>(
-            `http://localhost:3000/tasks/${id}`,
+            `${environment.backendURL}/tasks/${id}`,
             {
                 name: task.name,
                 status: task.status,
@@ -73,7 +75,7 @@ export class TaskService {
     }
     
     delete(id: number): void {
-        this.http.delete<ITask>(`http://localhost:3000/tasks/${id}`)
+        this.http.delete<ITask>(`${environment.backendURL}/tasks/${id}`)
             .subscribe(() => {
                 // this.tasks just a getter!
                 const tasks = this.tasks;

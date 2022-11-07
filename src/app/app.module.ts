@@ -49,4 +49,6 @@ import { ByFilterPipe } from './pipe/byFilter.pipe';
     ]
 })
 export class AppModule {
+    constructor() {
+    }
 }

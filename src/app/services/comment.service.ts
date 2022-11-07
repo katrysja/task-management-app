@@ -1,9 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
-import { IComment } from 'src/app/interfaces/iComment';
-import { ITask } from 'src/app/interfaces/iTask';
 import { BehaviorSubject, Observable } from 'rxjs';
+
+import { environment } from 'src/environments/environment';
+
+import { IComment } from 'src/app/interfaces/iComment';
 
 @Injectable({
     providedIn: 'root'
@@ -21,19 +23,19 @@ export class CommentService {
     }
     
     get(): void {
-        this.http.get<IComment[]>(`http://localhost:3000/comments?_expand=task`)
+        this.http.get<IComment[]>(`${environment.backendURL}/comments?_expand=task`)
             .subscribe((comments: IComment[]) => {
                 this._comments$$.next(comments);
             });
     }
     
     getByTaskId(id: number) {
-        return this.http.get<IComment[]>(`http://localhost:3000/comments/?taskId=${id}`);
+        return this.http.get<IComment[]>(`${environment.backendURL}/comments/?taskId=${id}`);
     }
     
     post(comment: IComment): void {
         this.http.post<IComment>(
-            `http://localhost:3000/comments`,
+            `${environment.backendURL}/comments`,
             comment
         ).subscribe((comment: IComment) => {
             // this.tasks just a getter!

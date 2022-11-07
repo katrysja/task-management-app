@@ -57,7 +57,7 @@ describe('BoardService', () => {
     it('should receive boards and return related tasks', (done: DoneFn) => {
         boardService.get();
 
-        const testBoardRequest: TestRequest = httpMock.expectOne('http://localhost:3000/boards');
+        const testBoardRequest: TestRequest = httpMock.expectOne(`${environment.backendURL}/boards`);
         testBoardRequest.flush(DEFAULT_BOARDS);
 
         expect(testBoardRequest.request.method).toBe('GET');
@@ -80,7 +80,7 @@ describe('BoardService', () => {
     it('should create board', (done: DoneFn) => {
         boardService.post(DEFAULT_BOARDS[0]);
 
-        const testRequest: TestRequest = httpMock.expectOne('http://localhost:3000/boards');
+        const testRequest: TestRequest = httpMock.expectOne(`${environment.backendURL}/boards`);
         testRequest.flush(DEFAULT_BOARDS[0]);
 
         expect(testRequest.request.method).toBe('POST');
@@ -96,7 +96,7 @@ describe('BoardService', () => {
     it('should update board', (done: DoneFn) => {
         boardService.patch(0, DEFAULT_BOARDS[0]);
 
-        const testRequest: TestRequest = httpMock.expectOne('http://localhost:3000/boards/0');
+        const testRequest: TestRequest = httpMock.expectOne(`${environment.backendURL}/boards/0`);
         testRequest.flush(DEFAULT_BOARDS[0]);
 
         expect(testRequest.request.method).toBe('PATCH');
@@ -114,7 +114,7 @@ describe('BoardService', () => {
     it('should delete board', (done: DoneFn) => {
         boardService.delete(0);
 
-        const testRequest: TestRequest = httpMock.expectOne('http://localhost:3000/boards/0');
+        const testRequest: TestRequest = httpMock.expectOne(`${environment.backendURL}/boards/0`);
         testRequest.flush(DEFAULT_BOARDS[0]);
 
         expect(testRequest.request.method).toBe('DELETE');

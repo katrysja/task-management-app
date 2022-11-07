@@ -2,6 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, combineLatest } from 'rxjs';
 
+import { environment } from 'src/environments/environment';
+
 import { ESortDirection } from '../enum/eSortDirection';
 import { ESortType } from '../enum/eSortType';
 import { EStatusType } from '../enum/eStatusType';
@@ -35,7 +37,7 @@ export class BoardService {
     }
     
     get(): void {
-        this.http.get<IBoard[]>(`http://localhost:3000/boards?_embed=tasks`)
+        this.http.get<IBoard[]>(`${environment.backendURL}/boards?_embed=tasks`)
             .subscribe((boards: IBoard[]) => {
                 // this.addTasksGetter(boards);
                 this._boards$$.next(boards);
@@ -44,7 +46,7 @@ export class BoardService {
     
     getById(id: number, comments: boolean = false): void {
         if (comments === false) {
-            this.http.get<IBoard>(`http://localhost:3000/boards/${id}?_embed=tasks`)
+            this.http.get<IBoard>(`${environment.backendURL}/boards/${id}?_embed=tasks`)
                 .subscribe((board: IBoard) => {
                     // this.addTasksGetter([board]);
                     board.tasks = board.tasks.filter(task => !task.deleted);
@@ -53,8 +55,8 @@ export class BoardService {
                 });
         } else {
             combineLatest([
-                this.http.get<IBoard>(`http://localhost:3000/boards/${id}?_embed=tasks`),
-                this.http.get<ITask[]>(`http://localhost:3000/boards/${id}/tasks?_embed=comments`)
+                this.http.get<IBoard>(`${environment.backendURL}/boards/${id}?_embed=tasks`),
+                this.http.get<ITask[]>(`${environment.backendURL}/boards/${id}/tasks?_embed=comments`)
             ]).subscribe(([board, tasks]) => {
                 board.tasks.forEach((task: ITask) => {
                     tasks.find((search: ITask) => {
@@ -76,7 +78,7 @@ export class BoardService {
     
     post(board: IBoard): void {
         this.http.post<IBoard>(
-            `http://localhost:3000/boards?_embed=tasks`,
+            `${environment.backendURL}/boards?_embed=tasks`,
             board
         ).subscribe((board: IBoard) => {
             // this.boards just a getter!
@@ -92,7 +94,7 @@ export class BoardService {
     
     patch(id: number, board: IBoard): void {
         this.http.patch<IBoard>(
-            `http://localhost:3000/boards/${id}?_embed=tasks`,
+            `${environment.backendURL}/boards/${id}?_embed=tasks`,
             {
                 name: board.name,
                 description: board.description,
@@ -115,7 +117,7 @@ export class BoardService {
     }
     
     delete(id: number): void {
-        this.http.delete<IBoard>(`http://localhost:3000/boards/${id}?_embed=tasks`)
+        this.http.delete<IBoard>(`${environment.backendURL}/boards/${id}?_embed=tasks`)
             .subscribe(() => {
                 // this.boards just a getter!
                 const boards = this.boards;

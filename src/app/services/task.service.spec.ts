@@ -45,7 +45,7 @@ describe('Task service', () => {
     it('should return tasks', (done: DoneFn) => {
         taskService.get();
         
-        const testTaskServiceRequest: TestRequest = httpMock.expectOne('http://localhost:3000/tasks');
+        const testTaskServiceRequest: TestRequest = httpMock.expectOne(`${environment.backendURL}/tasks`);
         testTaskServiceRequest.flush(DEFAULT_TASKS);
         expect(testTaskServiceRequest.request.method).toBe('GET');
         
@@ -56,7 +56,7 @@ describe('Task service', () => {
         
         taskService.post(DEFAULT_TASKS[0]);
         
-        const testRequest: TestRequest = httpMock.expectOne('http://localhost:3000/tasks');
+        const testRequest: TestRequest = httpMock.expectOne(`${environment.backendURL}/tasks`);
         testRequest.flush(DEFAULT_TASKS[0]);
         
         expect(testRequest.request.method).toBe('POST');
@@ -71,7 +71,7 @@ describe('Task service', () => {
     it('should update task via method PATCH', (done: DoneFn) => {
         taskService.patch(0, DEFAULT_TASKS[0]);
         
-        const taskRequest: TestRequest = httpMock.expectOne('http://localhost:3000/tasks/0');
+        const taskRequest: TestRequest = httpMock.expectOne(`${environment.backendURL}/tasks/0`);
         taskRequest.flush(DEFAULT_TASKS[0]);
         expect(taskRequest.request.method).toBe('PATCH');
         taskService.tasks$.subscribe((tasks: ITask[]) => {
@@ -87,7 +87,7 @@ describe('Task service', () => {
     // it('should delete task via method DELETE', (done: DoneFn) => {
     //     taskService.delete(0);
     //
-    //     const taskRequest: TestRequest = httpMock.expectOne('http://localhost:3000/tasks/0');
+    //     const taskRequest: TestRequest = httpMock.expectOne(`${environment.backendURL}/tasks/0`);
     //     taskRequest.flush(DEFAULT_TASKS[0]);
     //
     //     expect(taskRequest.request.method).toBe('DELETE');
