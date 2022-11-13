@@ -43,17 +43,17 @@ describe('BoardCardComponent', () => {
         
         btn.click();
         
-        expect(spyOpenEmit ).toHaveBeenCalled();
+        expect(spyOpenEmit).toHaveBeenCalled();
     });
     
     it('click on delete button should trigger emit special event', () => {
         const btn = fixture.nativeElement.querySelector('.delete-button');
         expect(btn).toBeTruthy();
-    
+        
         const spyDeleteEmit = spyOn(component.deleteEventEmitter, 'emit');
-    
+        
         btn.click();
-    
+        
         expect(spyDeleteEmit).toHaveBeenCalled();
     });
     

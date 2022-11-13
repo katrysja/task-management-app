@@ -8,7 +8,7 @@ $border-dark: #2f135b;
 :host {
     font-size: 16px;
     text-align: center;
-   max-width: 1200px;
+    max-width: 1200px;
     display: flex;
     padding: 1rem 2rem;
     color: $white-color;
@@ -22,6 +22,7 @@ $border-dark: #2f135b;
         display: flex;
         flex-direction: column;
         align-items: center;
+
         &-__title {
             font-size: 2rem;
             font-style: italic;
@@ -39,10 +40,11 @@ $border-dark: #2f135b;
         border: dotted 1px $border-light;
         font-size: 2rem;
 
-         > * {
-             margin-right: 0.5rem;
-             background-color: #8f8fd9;
-         }
+        > * {
+            margin-right: 0.5rem;
+            background-color: #8f8fd9;
+        }
+
         &:active,
         &:focus {
             outline: #b4b41a;
@@ -55,6 +57,7 @@ $border-dark: #2f135b;
         justify-content: space-around;
 
     }
+
     .board-container {
         display: flex;
         justify-content: space-around;
@@ -69,6 +72,7 @@ $border-dark: #2f135b;
         margin: 1rem;
         width: 20%;
     }
+
     .modal-board {
         border-radius: 5%;
         border: 1px solid #00ff95;

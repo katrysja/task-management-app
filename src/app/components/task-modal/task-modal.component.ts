@@ -46,7 +46,7 @@ export class TaskModalComponent implements OnInit, OnChanges {
     
     onSaveClick() {
         const { name, status, boardId, comment } = this.form.getRawValue();
-    
+        
         if (comment !== '') {
             this.commentsService.post({
                 text: comment,

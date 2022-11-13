@@ -2,72 +2,69 @@
     <header>
         <h1 class="dashboard__title">Board {{ board.name }}</h1>
         <div class="dashboard-search container">
-            <input class="dashboard__search-input"  id="input-search" #filterInput placeholder="Filter" (keyup)="onFilterChange()"/>
+            <input #filterInput (keyup)="onFilterChange()" class="dashboard__search-input" id="input-search" placeholder="Filter"/>
             <div class="search"></div>
 
-        <select #sortTypeSelect>
-            <option value="name">Name</option>
-            <option value="createdAt">Date of creation</option>
-        </select>
-        <button (click)="onSortClick('ascending')">Asc</button>
-        <button>Desc</button>
+            <select #sortTypeSelect>
+                <option value="name">Name</option>
+                <option value="createdAt">Date of creation</option>
+            </select>
+            <button (click)="onSortClick('ascending')">Asc</button>
+            <button>Desc</button>
         </div>
     </header>
 
     <main>
         <div class="tasks-list">
             <app-task-column
-                    title="To Do"
-                    status="todo"
                     (create)="onCreateTask($event)"
                     (target)="onColumnHit($event)"
+                    status="todo"
+                    title="To Do"
             >
 
                 <ng-container *ngFor="let task of board.tasks | byFilter:'status':'todo' | byFilter:'name':filterCriteria">
                     <app-task-card
-                        [task]="task"
-
-                        (drop)="onCardDrop(task)"
-                        (patch)="onPatchClick(task)"
-                        (archive)="onArchiveClick(task)"
-                        (delete)="onDeleteClick(task)"
+                            (archive)="onArchiveClick(task)"
+                            (delete)="onDeleteClick(task)"
+                            (drop)="onCardDrop(task)"
+                            (patch)="onPatchClick(task)"
+                            [task]="task"
                     ></app-task-card>
                 </ng-container>
             </app-task-column>
 
             <app-task-column
-                    title="In Progress"
-                    status="in-progress"
                     (create)="onCreateTask($event)"
                     (target)="onColumnHit($event)"
+                    status="in-progress"
+                    title="In Progress"
             >
                 <ng-container *ngFor="let task of board?.tasks | byFilter:'status':'in-progress' | byFilter:'name':filterCriteria">
                     <app-task-card
-                        [task]="task"
-
-                        (drop)="onCardDrop(task)"
-                        (patch)="onPatchClick(task)"
-                        (archive)="onArchiveClick(task)"
-                        (delete)="onDeleteClick(task)"
+                            (archive)="onArchiveClick(task)"
+                            (delete)="onDeleteClick(task)"
+                            (drop)="onCardDrop(task)"
+                            (patch)="onPatchClick(task)"
+                            [task]="task"
                     ></app-task-card>
                 </ng-container>
             </app-task-column>
 
 
             <app-task-column
-                    title="Done"
-                    status="done"
                     (create)="onCreateTask($event)"
                     (target)="onColumnHit($event)"
+                    status="done"
+                    title="Done"
             >
                 <ng-container *ngFor="let task of board?.tasks | byFilter:'status':'done' | byFilter:'name':filterCriteria">
                     <app-task-card
-                        [task]="task"
-
-                        (drop)="onCardDrop(task)"
-                        (patch)="onPatchClick(task)"
-                        (archive)="onArchiveClick(task)"
-                        (delete)="onDeleteClick(task)"
+                            (archive)="onArchiveClick(task)"
+                            (delete)="onDeleteClick(task)"
+                            (drop)="onCardDrop(task)"
+                            (patch)="onPatchClick(task)"
+                            [task]="task"
                     ></app-task-card>
                 </ng-container>
             </app-task-column>
@@ -75,11 +72,11 @@
     </main>
 
     <app-task-modal
-        class="task-modal"
-        id="createModal"
-        *ngIf="isModalVisible"
-        [task]="selectedTask"
-        (close)="onModalClose()"
-        (save)="onModalSave($event)"
+            (close)="onModalClose()"
+            (save)="onModalSave($event)"
+            *ngIf="isModalVisible"
+            [task]="selectedTask"
+            class="task-modal"
+            id="createModal"
     ></app-task-modal>
 </div>

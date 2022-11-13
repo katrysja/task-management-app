@@ -1,14 +1,15 @@
-<div class="tasks-column tasks-{{status}}"
-     [class.drag-target]="dragTarget"
+<div (dragend)="onDragEnd($event)"
      (dragenter)="onDragEnter($event)"
-     (dragover)="onDragOver($event)"
-     (dragend)="onDragEnd($event)"
      (dragleave)="onDragLeave($event)"
+     (dragover)="onDragOver($event)"
+     [class.drag-target]="dragTarget"
+     class="tasks-column tasks-{{status}}"
 >
     <h3 class="tasks-column__header">{{ title }}</h3>
-    <button class="tasks-column__button"
-            (click)="onCreateClick(status)"
-    >+</button>
+    <button (click)="onCreateClick(status)"
+            class="tasks-column__button"
+    >+
+    </button>
 
     <ng-content></ng-content>
 </div>

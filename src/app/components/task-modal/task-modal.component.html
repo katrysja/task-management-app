@@ -1,24 +1,19 @@
-<form [formGroup]="form"  class="highlighted board-form modal" (ngSubmit)="onSaveClick()">
+<form (ngSubmit)="onSaveClick()" [formGroup]="form" class="highlighted board-form modal">
     <div class="modal-container">
         <h2 class="form__title">Task</h2>
 
         <div class="form-container__input">
-            <label for="name">Name:
-                <input id="name" [value]="task.name" formControlName="name">
-            </label>
+            <label for="name">Name: <input [value]="task.name" formControlName="name" id="name"> </label>
         </div>
 
-        <label for="name">Status:
-            <select id="status" [value]="task.status" formControlName="status">
-                <option value="todo">To Do</option>
-                <option value="in-progress">In Progress</option>
-                <option value="done">Done</option>
-            </select>
-        </label>
+        <label for="name">Status: <select [value]="task.status" formControlName="status" id="status">
+            <option value="todo">To Do</option>
+            <option value="in-progress">In Progress</option>
+            <option value="done">Done</option>
+        </select> </label>
 
         <div class="form-container__input">
-            <label for="comment">Comment:
-                <input id="comment" placeholder="new comment" formControlName="comment">
+            <label for="comment">Comment: <input formControlName="comment" id="comment" placeholder="new comment">
             </label>
         </div>
 
@@ -27,7 +22,7 @@
             <p>{{ comment.text }}</p>
         </ng-container>
 
-        <button type="button" id="buttonClose" class="button" (click)="onCloseClick()">Cancel</button>
-        <button type="submit"  id="buttonSave" class="button" >Save</button>
+        <button (click)="onCloseClick()" class="button" id="buttonClose" type="button">Cancel</button>
+        <button class="button" id="buttonSave" type="submit">Save</button>
     </div>
 </form>

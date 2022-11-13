@@ -11,7 +11,7 @@ export class BoardFilterPipe implements PipeTransform {
         if (boards === null) {
             return [];
         }
-
+        
         if (criteria === '') {
             return boards;
         } else {

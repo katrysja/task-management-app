@@ -5,6 +5,6 @@ export interface IBoard {
     createdAt?: Date,
     name: string,
     description: string,
-
+    
     tasks?: ITask[]
 }

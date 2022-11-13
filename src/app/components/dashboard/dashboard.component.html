@@ -3,7 +3,7 @@
         <h1 class="dashboard__title">Dashboard</h1>
 
         <div class="dashboard-search container">
-            <input class="dashboard__search-input"  id="input-search" #filterInput placeholder="Filter" (keyup)="onFilterChange()"/>
+            <input #filterInput (keyup)="onFilterChange()" class="dashboard__search-input" id="input-search" placeholder="Filter"/>
             <div class="search"></div>
 
 
@@ -15,36 +15,36 @@
                 <option value="tasksDone">Number of done</option>
             </select>
 
-            <button  class="button dashboard__button" id="sortButton"  (click)="onSortClick('ascending')">Asc</button>
-            <button class="button dashboard__button" (click)="onSortClick('descending')">Desc</button>
+            <button (click)="onSortClick('ascending')" class="button dashboard__button" id="sortButton">Asc</button>
+            <button (click)="onSortClick('descending')" class="button dashboard__button">Desc</button>
         </div>
     </header>
 
     <main class="main">
-      <button  class="button--create" id="createButton" (click)="onCreateClick()">
-        <img src="https://img.icons8.com/nolan/64/plus-2-math.png" alt="plus icon"/>
-        <div class="button--create__description">Add new</div>
-      </button>
+        <button (click)="onCreateClick()" class="button--create" id="createButton">
+            <img alt="plus icon" src="https://img.icons8.com/nolan/64/plus-2-math.png"/>
+            <div class="button--create__description">Add new</div>
+        </button>
 
-      <ng-container class="board-container" *ngFor="let board of (boards$ | async | boardFilter:filterInput.value)">
-        <app-board-card class="board"
-            [id]="board.id"
-            [board]="board"
+        <ng-container *ngFor="let board of (boards$ | async | boardFilter:filterInput.value)" class="board-container">
+            <app-board-card (delete)="onDeleteClick($event)"
+                            (open)="onOpenClick($event)"
+                            (patch)="onPatchClick($event)"
 
-            (open)="onOpenClick($event)"
-            (patch)="onPatchClick($event)"
-            (delete)="onDeleteClick($event)"
-        ></app-board-card>
-      </ng-container>
+                            [board]="board"
+                            [id]="board.id"
+                            class="board"
+            ></app-board-card>
+        </ng-container>
     </main>
 
     <app-board-modal
-            class="modal-board"
-            id="createModal"
-            *ngIf="isModalVisible"
-            [board]="selectedBoard"
             (close)="onModalClose()"
             (save)="onModalSave($event)"
+            *ngIf="isModalVisible"
+            [board]="selectedBoard"
+            class="modal-board"
+            id="createModal"
     ></app-board-modal>
 </section>
 

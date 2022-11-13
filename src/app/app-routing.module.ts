@@ -5,12 +5,12 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 
 const routes: Routes = [
-    {path: 'dashboard', component: DashboardComponent},
-    {path: 'board/:id', component: BoardComponent},
-    {path: 'board', redirectTo: 'dashboard', pathMatch: 'full'},
-    {path: '', redirectTo: 'dashboard', pathMatch: 'full'},
-    {path: '**', component: NotFoundComponent}
-
+    { path: 'dashboard', component: DashboardComponent },
+    { path: 'board/:id', component: BoardComponent },
+    { path: 'board', redirectTo: 'dashboard', pathMatch: 'full' },
+    { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+    { path: '**', component: NotFoundComponent }
+    
     // {path: 'login', component: LoginComponent},
     // {path: '', redirectTo: '/login', pathMatch: 'full'},
     // {

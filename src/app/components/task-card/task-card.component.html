@@ -1,8 +1,7 @@
 <ng-container>
-    <div class="wrapper"
+    <div (dragend)="onDragEnd()"
+         class="wrapper"
          draggable="true"
-
-         (dragend)="onDragEnd()"
     >
         <div>
             <div>{{ task.name }}</div>

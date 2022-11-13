@@ -10,8 +10,6 @@ import { EStatusType } from '../enum/eStatusType';
 import { IBoard } from '../interfaces/iBoard';
 import { ITask } from '../interfaces/iTask';
 
-import { TaskService } from './task.service';
-
 @Injectable({
     providedIn: 'root'
 })
@@ -23,8 +21,7 @@ export class BoardService {
     board$: Observable<IBoard> = this._board$$.asObservable();
     
     constructor(
-        private readonly http: HttpClient,
-        private readonly taskService: TaskService
+        private readonly http: HttpClient
     ) {
     }
     
@@ -111,7 +108,7 @@ export class BoardService {
             
             // this.addTasksGetter(boards);
             this._boards$$.next(boards);
-    
+            
             this.get();
         });
     }

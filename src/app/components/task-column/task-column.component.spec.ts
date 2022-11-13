@@ -26,7 +26,6 @@ describe('TaskColumnComponent', () => {
         expect(component).toBeTruthy();
     });
     
-    
     it('no title in the DOM after createComponent()', () => {
         expect(h3.innerText).toEqual('');
     });
@@ -36,7 +35,7 @@ describe('TaskColumnComponent', () => {
         expect(title).toBeTruthy();
     });
     
-    it('should show original title',  () => {
+    it('should show original title', () => {
         component.title = 'title';
         
         fixture.detectChanges();
@@ -58,7 +57,7 @@ describe('TaskColumnComponent', () => {
     //     expect(spyTriggerEmit).toHaveBeenCalled();
     // });
     
-    it('should generate click new task',  () => {
+    it('should generate click new task', () => {
         const button = fixture.nativeElement.querySelector('.tasks-column__button');
         
         expect(button).toBeTruthy();

@@ -11,17 +11,20 @@ $background-input: #80DDF1FF;
     max-width: 1600px;
     margin: 0 auto;
     padding: 1rem 1.5rem;
+
     .button {
-        color:  $primary-color;
+        color: $primary-color;
         font-size: 2.4rem;
         line-height: 2.4rem;
         vertical-align: middle;
         transition: color .25s;
+
         &:hover {
             color: $dark-grey-color;
         }
     }
 }
+
 .form-container__input {
     position: relative;
     display: flex;
@@ -49,16 +52,19 @@ $background-input: #80DDF1FF;
         animation: gradient 3s linear infinite;
     }
 }
+
 input {
     flex-grow: 1;
     background-color: #bb8ee7;
     font-size: 1.8rem;
     line-height: 2.4rem;
     vertical-align: middle;
+
     &::-webkit-input-placeholder {
         color: $background-input;
     }
 }
+
 .modal {
     position: fixed;
     top: 0;
@@ -68,6 +74,7 @@ input {
     z-index: 1000;
     overflow: auto;
     background-color: #81b3d2;
+
     &-container {
         max-width: 576px;
         background: gray;

@@ -1,5 +1,5 @@
 import { ByFilterPipe } from './byFilter.pipe';
-import tasks from './../mocks/tasks.mock.json'
+import tasks from './../mocks/tasks.mock.json';
 import { ITask } from 'src/app/interfaces/iTask';
 import { EStatusType } from 'src/app/enum/eStatusType';
 

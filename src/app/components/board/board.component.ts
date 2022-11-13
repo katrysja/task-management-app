@@ -1,6 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { first, Observable, last } from 'rxjs';
+import { first, Observable } from 'rxjs';
 
 import { ESortDirection } from '../../enum/eSortDirection';
 import { ESortType } from '../../enum/eSortType';
@@ -37,7 +37,8 @@ export class BoardComponent implements OnInit {
         private readonly boardService: BoardService,
         private readonly taskService: TaskService,
         private readonly route: ActivatedRoute
-    ) { }
+    ) {
+    }
     
     ngOnInit(): void {
         this.route.params
@@ -111,7 +112,7 @@ export class BoardComponent implements OnInit {
         if (task.id === undefined) {
             return;
         }
-    
+        
         task.deleted = true;
         this.taskService.patch(<number>task.id, task);
         this.taskService.tasks$.subscribe(() => {

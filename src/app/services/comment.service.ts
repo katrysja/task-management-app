@@ -14,12 +14,12 @@ export class CommentService {
     private readonly _comments$$: BehaviorSubject<IComment[]> = new BehaviorSubject<IComment[]>([]);
     comments$: Observable<IComment[]> = this._comments$$.asObservable();
     
-    get comments(): IComment[] {
-        return this._comments$$.value;
-    }
-    
     constructor(private readonly http: HttpClient) {
     
+    }
+    
+    get comments(): IComment[] {
+        return this._comments$$.value;
     }
     
     get(): void {
@@ -41,7 +41,7 @@ export class CommentService {
             // this.tasks just a getter!
             const comments = this.comments;
             comments.push(comment);
-        
+            
             this._comments$$.next(comments);
         });
     }

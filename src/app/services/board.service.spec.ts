@@ -55,34 +55,34 @@ describe('BoardService', () => {
         httpMock.verify();
     });
     
-     it('should create service', () => {
-         expect(boardService).toBeTruthy();
-     });
+    it('should create service', () => {
+        expect(boardService).toBeTruthy();
+    });
     
-     it('should receive boards and return related tasks', (done: DoneFn) => {
-         boardService.get();
-    
-         const testBoardRequest: TestRequest = httpMock.expectOne(`${environment.backendURL}/boards?_embed=tasks`);
-         testBoardRequest.flush(DEFAULT_BOARDS);
-    
-         expect(testBoardRequest.request.method).toBe('GET');
-    
-         boardService.boards$.subscribe((boards: IBoard[]) => {
-             expect(boards).toBeTruthy();
-             expect(boards[0]).toEqual(DEFAULT_BOARDS[0]);
-             expect(boards[1]).toEqual(DEFAULT_BOARDS[1]);
-    
-             console.log(boards);
-    
-             // tasks it's just a getter, so we cannot rely on this as simple key/value
-             expect(boards[0].tasks).toEqual([DEFAULT_TASKS[2]]);
-             expect(boards[1].tasks).toEqual([DEFAULT_TASKS[1], DEFAULT_TASKS[3]]);
-    
-             return of(boards);
-         });
-    
-         done();
-     });
+    it('should receive boards and return related tasks', (done: DoneFn) => {
+        boardService.get();
+        
+        const testBoardRequest: TestRequest = httpMock.expectOne(`${environment.backendURL}/boards?_embed=tasks`);
+        testBoardRequest.flush(DEFAULT_BOARDS);
+        
+        expect(testBoardRequest.request.method).toBe('GET');
+        
+        boardService.boards$.subscribe((boards: IBoard[]) => {
+            expect(boards).toBeTruthy();
+            expect(boards[0]).toEqual(DEFAULT_BOARDS[0]);
+            expect(boards[1]).toEqual(DEFAULT_BOARDS[1]);
+            
+            console.log(boards);
+            
+            // tasks it's just a getter, so we cannot rely on this as simple key/value
+            expect(boards[0].tasks).toEqual([DEFAULT_TASKS[2]]);
+            expect(boards[1].tasks).toEqual([DEFAULT_TASKS[1], DEFAULT_TASKS[3]]);
+            
+            return of(boards);
+        });
+        
+        done();
+    });
     
     it('should create board', (done: DoneFn) => {
         const newBoard: IBoard = {
@@ -116,21 +116,21 @@ describe('BoardService', () => {
             description: 'test'
         };
         boardService.patch(0, updatedBoard);
-
+        
         const patchRequest: TestRequest = httpMock.expectOne(`${environment.backendURL}/boards/0?_embed=tasks`);
         patchRequest.flush(updatedBoard);
-
+        
         const getRequest: TestRequest = httpMock.expectOne(`${environment.backendURL}/boards?_embed=tasks`);
         getRequest.flush([...DEFAULT_BOARDS, updatedBoard]);
-
+        
         expect(patchRequest.request.method).toBe('PATCH');
         expect(getRequest.request.method).toBe('GET');
-
+        
         boardService.boards$.subscribe((boards: IBoard[]) => {
             expect(boards).toBeTruthy();
             //console.log(boards, updatedBoard);
             //expect(boards[0].name).toEqual(updatedBoard.name);
-
+            
             return of(boards);
         });
         
@@ -192,11 +192,10 @@ describe('BoardService', () => {
         expect(boardService.boards[0].name).toEqual('Test Board 4');
     });
     
-    it( 'should sort boards by name by Desc', () => {
+    it('should sort boards by name by Desc', () => {
         boardService.sortBy(ESortType.tasksDone, ESortDirection.descending);
         expect(boardService.boards[4].name).toEqual('Test Board 4');
     });
-    
     
 });
 
@@ -258,34 +257,34 @@ describe('BoardService', () => {
 
       done();
   });*/
-  
-  /*it('should sort boards by name by Asc', () => {
-      boardService.sortBy(ESortType.name, ESortDirection.ascending);
-      expect(boardService.boards[0].name).toEqual('Test Board 0');
-  });
-  
-  it('should sort boards by name by Desc', () => {
-      boardService.sortBy(ESortType.name, ESortDirection.descending);
-      expect(boardService.boards[0].name).toEqual('Test Board 4');
-  });
-  
-  it('should sort boards by createdAt by Asc', () => {
-      boardService.sortBy(ESortType.createdAt, ESortDirection.ascending);
-      expect(boardService.boards[0].createdAt).toEqual(new Date('2022-10-10T00:00:00.000Z'));
-  });
-  
-  it('should sort boards by name by Desc', () => {
-      boardService.sortBy(ESortType.createdAt, ESortDirection.descending);
-      expect(boardService.boards[0].createdAt).toEqual(new Date('2022-10-14T00:00:00.000Z'));
-  });
-  
-  it('should sort boards by tasksDone by Asc', () => {
-      boardService.sortBy(ESortType.tasksDone, ESortDirection.ascending);
-      expect(boardService.boards[0].name).toEqual('Test Board 4');
-  });
-  
-  it( 'should sort boards by name by Desc', () => {
-      boardService.sortBy(ESortType.tasksDone, ESortDirection.descending);
-      expect(boardService.boards[4].name).toEqual('Test Board 4');
-  });
-  */
+
+/*it('should sort boards by name by Asc', () => {
+    boardService.sortBy(ESortType.name, ESortDirection.ascending);
+    expect(boardService.boards[0].name).toEqual('Test Board 0');
+});
+
+it('should sort boards by name by Desc', () => {
+    boardService.sortBy(ESortType.name, ESortDirection.descending);
+    expect(boardService.boards[0].name).toEqual('Test Board 4');
+});
+
+it('should sort boards by createdAt by Asc', () => {
+    boardService.sortBy(ESortType.createdAt, ESortDirection.ascending);
+    expect(boardService.boards[0].createdAt).toEqual(new Date('2022-10-10T00:00:00.000Z'));
+});
+
+it('should sort boards by name by Desc', () => {
+    boardService.sortBy(ESortType.createdAt, ESortDirection.descending);
+    expect(boardService.boards[0].createdAt).toEqual(new Date('2022-10-14T00:00:00.000Z'));
+});
+
+it('should sort boards by tasksDone by Asc', () => {
+    boardService.sortBy(ESortType.tasksDone, ESortDirection.ascending);
+    expect(boardService.boards[0].name).toEqual('Test Board 4');
+});
+
+it( 'should sort boards by name by Desc', () => {
+    boardService.sortBy(ESortType.tasksDone, ESortDirection.descending);
+    expect(boardService.boards[4].name).toEqual('Test Board 4');
+});
+*/

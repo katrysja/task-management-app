@@ -8,7 +8,7 @@ import { IBoard } from '../../interfaces/iBoard';
 })
 export class BoardCardComponent implements OnInit {
     @Input('board') board: IBoard;
-
+    
     @Output('open') openEventEmitter: EventEmitter<IBoard> = new EventEmitter();
     @Output('patch') patchEventEmitter: EventEmitter<IBoard> = new EventEmitter();
     @Output('delete') deleteEventEmitter: EventEmitter<IBoard> = new EventEmitter();
@@ -16,21 +16,21 @@ export class BoardCardComponent implements OnInit {
     constructor() {
     
     }
-
+    
     ngOnInit(): void {
-
+    
     }
-
+    
     onOpenClick() {
         this.openEventEmitter.emit(this.board);
     }
-
+    
     onPatchClick(event: MouseEvent) {
         event.stopPropagation();
         
         this.patchEventEmitter.emit(this.board);
     }
-
+    
     onDeleteClick(event: MouseEvent) {
         event.stopPropagation();
         

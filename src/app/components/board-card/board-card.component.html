@@ -1,10 +1,10 @@
-<button  class="open-button" (click)="onOpenClick()">
+<button (click)="onOpenClick()" class="open-button">
     <div>{{ board.name }}</div>
     <small>{{ board.createdAt | date }}</small>
 
     <div>
-        <button  class="patch-button" (click)="onPatchClick($event)">✍</button>
-        <button  class="delete-button" (click)="onDeleteClick($event)">🗑</button>
+        <button (click)="onPatchClick($event)" class="patch-button">✍</button>
+        <button (click)="onDeleteClick($event)" class="delete-button">🗑</button>
     </div>
 </button>
 
