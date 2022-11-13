@@ -1,14 +1,17 @@
 <div *ngIf="board$ | async as board">
     <header>
-        <h1>Board {{ board.name }}</h1>
+        <h1 class="dashboard__title">Board {{ board.name }}</h1>
+        <div class="dashboard-search container">
+            <input class="dashboard__search-input"  id="input-search" #filterInput placeholder="Filter" (keyup)="onFilterChange()"/>
+            <div class="search"></div>
 
-        <input #filterInput placeholder="Filter" (keyup)="onFilterChange()"/>
         <select #sortTypeSelect>
             <option value="name">Name</option>
             <option value="createdAt">Date of creation</option>
         </select>
         <button (click)="onSortClick('ascending')">Asc</button>
         <button>Desc</button>
+        </div>
     </header>
 
     <main>

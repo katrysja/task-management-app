@@ -30,7 +30,8 @@ export class BoardModalComponent implements OnInit, OnChanges {
 
     ngOnChanges() {
         this.form.setValue({
-            name: this.board.name, description: this.board.description
+            name: this.board.name,
+            description: this.board.description
         });
 
         this.isDescriptionDisabled = this.board.id !== undefined;

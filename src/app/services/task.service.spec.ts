@@ -1,10 +1,12 @@
-import tasks from 'src/app/mocks/tasks.mock.json';
+import { TestBed } from '@angular/core/testing';
+import { of } from 'rxjs';
+import { environment } from 'src/environments/environment';
+
 import { EStatusType } from 'src/app/enum/eStatusType';
+import { ITask } from 'src/app/interfaces/iTask';
 import { HttpTestingController, HttpClientTestingModule, TestRequest } from '@angular/common/http/testing';
 import { TaskService } from 'src/app/services/task.service';
-import { TestBed } from '@angular/core/testing';
-import { ITask } from 'src/app/interfaces/iTask';
-import { of } from 'rxjs';
+import tasks from 'src/app/mocks/tasks.mock.json';
 
 describe('Task service', () => {
     
@@ -45,7 +47,7 @@ describe('Task service', () => {
     it('should return tasks', (done: DoneFn) => {
         taskService.get();
         
-        const testTaskServiceRequest: TestRequest = httpMock.expectOne(`${environment.backendURL}/tasks`);
+        const testTaskServiceRequest: TestRequest = httpMock.expectOne(`${environment.backendURL}/tasks?_embed=comments&_expand=board&archive=false`);
         testTaskServiceRequest.flush(DEFAULT_TASKS);
         expect(testTaskServiceRequest.request.method).toBe('GET');
         
@@ -53,6 +55,31 @@ describe('Task service', () => {
     });
     
     it('should create task via method POST', (done: DoneFn) => {
+        const newTask = {
+            name: 'test',
+            description: 'test',
+            status: <EStatusType>'todo',
+            boardId: 2
+        };
+        
+        taskService.post(newTask);
+        
+        const testRequest: TestRequest = httpMock.expectOne(`${environment.backendURL}/tasks`);
+        testRequest.flush(newTask);
+        
+        expect(testRequest.request.method).toBe('POST');
+        
+        taskService.tasks$.subscribe((tasks: ITask[]) => {
+            //expect(tasks).toBeTruthy();
+            //expect(tasks[tasks.length - 1]).toEqual(newTask);
+            
+            return of(tasks);
+        });
+        
+        done();
+    });
+    
+    /*it('should create task via method POST', (done: DoneFn) => {
         
         taskService.post(DEFAULT_TASKS[0]);
         
@@ -103,5 +130,5 @@ describe('Task service', () => {
     //     });
     //
     //     done();
-    // });
+    // });*/
 });

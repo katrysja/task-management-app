@@ -2,8 +2,10 @@
     <header>
         <h1 class="dashboard__title">Dashboard</h1>
 
-        <div class="dashboard-search">
-            <input  class="dashboard__search-input"  id="input-search" #filterInput placeholder="Filter" (keyup)="onFilterChange()"/>
+        <div class="dashboard-search container">
+            <input class="dashboard__search-input"  id="input-search" #filterInput placeholder="Filter" (keyup)="onFilterChange()"/>
+            <div class="search"></div>
+
 
             <select #sortTypeSelect>
                 <option value="name">Name</option>
@@ -20,7 +22,7 @@
 
     <main class="main">
       <button  class="button--create" id="createButton" (click)="onCreateClick()">
-        <img src="https://img.icons8.com/nolan/64/plus-2-math.png"/>
+        <img src="https://img.icons8.com/nolan/64/plus-2-math.png" alt="plus icon"/>
         <div class="button--create__description">Add new</div>
       </button>
 

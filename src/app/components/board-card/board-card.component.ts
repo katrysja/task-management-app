@@ -1,6 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { IBoard } from '../../interfaces/iBoard';
-import { BoardService } from '../../services/board.service';
 
 @Component({
     selector: 'app-board-card',
@@ -12,9 +11,10 @@ export class BoardCardComponent implements OnInit {
 
     @Output('open') openEventEmitter: EventEmitter<IBoard> = new EventEmitter();
     @Output('patch') patchEventEmitter: EventEmitter<IBoard> = new EventEmitter();
-    @Output('delete') editEventEmitter: EventEmitter<IBoard> = new EventEmitter();
-
-    constructor(private boardService: BoardService) {
+    @Output('delete') deleteEventEmitter: EventEmitter<IBoard> = new EventEmitter();
+    
+    constructor() {
+    
     }
 
     ngOnInit(): void {
@@ -34,6 +34,6 @@ export class BoardCardComponent implements OnInit {
     onDeleteClick(event: MouseEvent) {
         event.stopPropagation();
         
-        this.editEventEmitter.emit(this.board);
+        this.deleteEventEmitter.emit(this.board);
     }
 }

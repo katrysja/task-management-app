@@ -1,5 +1,4 @@
-import { ComponentFixture, TestBed, fakeAsync } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 
@@ -8,34 +7,30 @@ import { BoardFilterPipe } from 'src/app/pipe/boardFilter.pipe';
 import { BoardModalComponent } from 'src/app/components/board-modal/board-modal.component';
 import { Router } from '@angular/router';
 
-// import tasks from 'src/app/mocks/tasks.mock.json';
-// import { EStatusType } from 'src/app/enum/eStatusType';
-// import { TaskService } from 'src/app/services/task.service';
-// import { BoardService } from 'src/app/services/board.service';
-// import boards from 'src/app/mocks/boards.mock.json';
-
 describe('DashboardComponent', () => {
     let component: DashboardComponent;
     let fixture: ComponentFixture<DashboardComponent>;
+    let router: Router;
     
     beforeEach(async () => {
         await TestBed.configureTestingModule({
                 imports: [
                     HttpClientTestingModule,
-                    RouterTestingModule
+                    RouterTestingModule.withRoutes([])
                 ],
                 declarations: [
                     BoardFilterPipe,
                     BoardModalComponent,
                     DashboardComponent
                 ],
-                providers: []
+                
             })
             .compileComponents();
     });
     
     beforeEach(() => {
         fixture = TestBed.createComponent(DashboardComponent);
+        router = TestBed.inject(Router);
         component = fixture.componentInstance;
         fixture.detectChanges();
     });
@@ -43,6 +38,14 @@ describe('DashboardComponent', () => {
     it('should create Dashboard Component', () => {
         expect(component).toBeTruthy();
         expect(component).toBeDefined();
+    });
+    
+    /*it('should navigate', () => {
+        
+        const navigateSpy = spyOn(router, 'navigate');
+        
+        component.goSomewhere();
+        expect(navigateSpy).toHaveBeenCalledWith(['/expectedUrl']);
     });
     
     it('should have title', () => {
@@ -185,7 +188,5 @@ describe('DashboardComponent', () => {
             
             expect(taskService.get()).toBeTruthy();
             expect(boardService.get()).toEqual();
-        })
-    );*/
-    
+        })*/
 });

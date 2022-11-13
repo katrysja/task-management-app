@@ -1,31 +1,33 @@
-<form [formGroup]="form" (ngSubmit)="onSaveClick()">
-    <h2>Task</h2>
+<form [formGroup]="form"  class="highlighted board-form modal" (ngSubmit)="onSaveClick()">
+    <div class="modal-container">
+        <h2 class="form__title">Task</h2>
 
-    <div>
-        <label for="name">Name:
-            <input id="name" [value]="task.name" formControlName="name">
+        <div class="form-container__input">
+            <label for="name">Name:
+                <input id="name" [value]="task.name" formControlName="name">
+            </label>
+        </div>
+
+        <label for="name">Status:
+            <select id="status" [value]="task.status" formControlName="status">
+                <option value="todo">To Do</option>
+                <option value="in-progress">In Progress</option>
+                <option value="done">Done</option>
+            </select>
         </label>
+
+        <div class="form-container__input">
+            <label for="comment">Comment:
+                <input id="comment" placeholder="new comment" formControlName="comment">
+            </label>
+        </div>
+
+        <div>Previous comments:</div>
+        <ng-container *ngFor="let comment of task.comments">
+            <p>{{ comment.text }}</p>
+        </ng-container>
+
+        <button type="button" id="buttonClose" class="button" (click)="onCloseClick()">Cancel</button>
+        <button type="submit"  id="buttonSave" class="button" >Save</button>
     </div>
-
-    <label for="name">Status:
-        <select id="status" [value]="task.status" formControlName="status">
-            <option value="todo">To Do</option>
-            <option value="in-progress">In Progress</option>
-            <option value="done">Done</option>
-        </select>
-    </label>
-
-    <div>
-        <label for="comment">Comment:
-            <input id="comment" placeholder="new comment" formControlName="comment">
-        </label>
-    </div>
-
-    <div>Previous comments:</div>
-    <ng-container *ngFor="let comment of task.comments">
-        <p>{{ comment.text }}</p>
-    </ng-container>
-
-    <button type="button" (click)="onCloseClick()">Cancel</button>
-    <button type="submit">Save</button>
 </form>

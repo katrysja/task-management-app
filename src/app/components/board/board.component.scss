@@ -1,3 +1,28 @@
+$primary-color: #bb8ee7;
+$white-color: #ffffff;
+$light-grey-color: #DEDEDE;
+$dark-grey-color: #A2A2A2;
+$border-light: #3e0844;
+$border-dark: #2f135b;
+
+.dashboard-search {
+    padding: 1rem;
+    display: flex;
+    align-content: flex-end;
+    justify-content: space-evenly;
+    outline: #bb8ee7;
+    border: dotted 1px $border-light;
+    font-size: 2rem;
+
+    > * {
+        margin-right: 0.5rem;
+        background-color: #8f8fd9;
+    }
+    &:active,
+    &:focus {
+        outline: #b4b41a;
+    }
+}
 .tasks-list {
   display: flex;
   justify-content: space-evenly;
@@ -7,3 +32,4 @@
 h3 {
   margin-top: 10px;
 }
+

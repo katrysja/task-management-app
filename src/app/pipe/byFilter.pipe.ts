@@ -9,12 +9,12 @@ export class ByFilterPipe implements PipeTransform {
         if (tasks === null) {
             return [];
         }
-
+        
         if (!prop || !criteria) {
             return <ITask[]>tasks;
         } else {
-            return <ITask[]>tasks.filter((task: {[index: string]: any}) => {
-                return task[prop].includes(criteria);
+            return <ITask[]>tasks.filter((task: { [index: string]: any }) => {
+                return task[prop].toLowerCase().includes(criteria);
             });
         }
     }
