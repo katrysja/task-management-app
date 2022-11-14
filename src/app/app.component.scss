@@ -1,11 +1,14 @@
 * {
     box-sizing: border-box;
     text-align: center;
-    padding: 1rem 2rem;
-    font-size: 18px;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    height: 100vh;
+    padding: 0;
     margin: 0 auto;
 
-
+}
+body {
+    font-size: 18px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+       .height  {
+    height: 100vh;
+    }
 }
