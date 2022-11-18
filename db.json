@@ -262,6 +262,20 @@
       "boardId": 1,
       "createdAt": "2022-11-18T15:36:03.574Z",
       "id": 32
+    },
+    {
+      "name": "Test Task 12",
+      "status": "todo",
+      "boardId": 1,
+      "createdAt": "2022-11-18T17:39:52.830Z",
+      "id": 33
+    },
+    {
+      "name": "",
+      "status": "",
+      "boardId": 1,
+      "createdAt": "2022-11-18T17:40:05.635Z",
+      "id": 34
     }
   ],
   "comments": [
@@ -363,6 +377,11 @@
       "taskId": 4,
       "createdAt": "2022-11-18T15:35:07.922Z",
       "id": 19
+    },
+    {
+      "text": "Test Comment 1.12",
+      "createdAt": "2022-11-18T17:39:52.826Z",
+      "id": 20
     }
   ]
 }
