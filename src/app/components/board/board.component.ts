@@ -118,6 +118,9 @@ export class BoardComponent implements OnInit {
         this.taskService.tasks$.subscribe(() => {
             this.boardService.getById(this.id, true);
         });
+        this.taskService.tasks$.subscribe(() => {
+            this.boardService.getById(this.id, true);
+        });
     }
     
     onArchiveClick(task: ITask) {
@@ -129,6 +132,9 @@ export class BoardComponent implements OnInit {
         this.taskService.patch(<number>task.id, task);
         this.taskService.tasks$.subscribe(() => {
             this.boardService.getById(task.boardId, true);
+        });
+        this.taskService.tasks$.subscribe(() => {
+            this.boardService.getById(this.id, true);
         });
     }
     
