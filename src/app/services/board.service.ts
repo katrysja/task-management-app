@@ -74,6 +74,11 @@ export class BoardService {
     }
     
     post(board: IBoard): void {
+        board = {
+            ...board,
+            createdAt: new Date()
+        };
+        
         this.http.post<IBoard>(
             `${environment.backendURL}/boards?_embed=tasks`,
             board
@@ -90,6 +95,11 @@ export class BoardService {
     }
     
     patch(id: number, board: IBoard): void {
+        board = {
+            ...board,
+            uopdatedAt: new Date()
+        };
+        
         this.http.patch<IBoard>(
             `${environment.backendURL}/boards/${id}?_embed=tasks`,
             {

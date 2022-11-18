@@ -34,6 +34,11 @@ export class CommentService {
     }
     
     post(comment: IComment): void {
+        comment = {
+            ...comment,
+            createdAt: new Date()
+        };
+        
         this.http.post<IComment>(
             `${environment.backendURL}/comments`,
             comment

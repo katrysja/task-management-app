@@ -18,6 +18,8 @@ import { TaskService } from '../../services/task.service';
     styleUrls: ['./board.component.scss']
 })
 export class BoardComponent implements OnInit {
+    id: number;
+    
     selectedTask: ITask;
     filterCriteria: string = '';
     isModalVisible: boolean = false;
@@ -44,9 +46,9 @@ export class BoardComponent implements OnInit {
         this.route.params
             .pipe(first())
             .subscribe((params) => {
-                const id: number = params['id'];
+                this.id = Number(params['id']);
                 
-                this.boardService.getById(id, true);
+                this.boardService.getById(this.id, true);
             });
         
         this.taskService.get();
@@ -67,7 +69,7 @@ export class BoardComponent implements OnInit {
         this.selectedTask = {
             name: '',
             status: <EStatusType>status,
-            boardId: this.boardService.board.id
+            boardId: this.id
         };
         
         this.isModalVisible = true;
@@ -78,6 +80,8 @@ export class BoardComponent implements OnInit {
     }
     
     onModalSave(task: ITask) {
+        task.boardId = this.id;
+        
         if (task.id) {
             this.taskService.patch(task.id, task);
         } else {
@@ -85,6 +89,8 @@ export class BoardComponent implements OnInit {
         }
         
         this.isModalVisible = false;
+        
+        this.boardService.getById(this.id, true);
     }
     
     onCardDrop(task: ITask) {
@@ -137,6 +143,10 @@ export class BoardComponent implements OnInit {
             this.taskService.patch(this.dragTask.id, {
                 ...this.dragTask,
                 status: <EStatusType>this.dragStatus
+            });
+            
+            this.taskService.tasks$.subscribe(() => {
+                this.boardService.getById(this.id, true);
             });
             
             this.dragStatus = this.dragTask = undefined;

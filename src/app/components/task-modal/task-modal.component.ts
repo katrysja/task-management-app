@@ -45,7 +45,7 @@ export class TaskModalComponent implements OnInit, OnChanges {
     }
     
     onSaveClick() {
-        const { name, status, boardId, comment } = this.form.getRawValue();
+        const { name, status, comment } = this.form.getRawValue();
         
         if (comment !== '') {
             this.commentsService.post({
@@ -57,8 +57,7 @@ export class TaskModalComponent implements OnInit, OnChanges {
         this.saveEventEmitter.emit({
             ...this.task,
             name,
-            status,
-            boardId
+            status
         });
     }
 }

@@ -6,6 +6,7 @@ import { IComment } from 'src/app/interfaces/iComment';
 export interface ITask {
     id?: number;
     createdAt?: Date;
+    updatedAt?: Date;
     name: string;
     status: EStatusType;
     boardId: number;

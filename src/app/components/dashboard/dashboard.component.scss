@@ -169,5 +169,16 @@ $border-dark: #2f135b;
     }
 
 }
+@media (max-width: 550px) {
+    .dashboard-search {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        align-content: stretch;
 
+           > * {
+        margin-bottom: 0.3rem;
+    }
+    }
+}
 

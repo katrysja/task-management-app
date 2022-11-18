@@ -36,21 +36,29 @@ export class TaskService {
     }
     
     post(task: ITask): void {
+        task = {
+            ...task,
+            createdAt: new Date()
+        };
+        
         this.http.post<ITask>(
             `${environment.backendURL}/tasks`,
             task
         ).subscribe((task: ITask) => {
-            // this.tasks just a getter!
-            const tasks = this.tasks;
-            tasks.push(task);
+            this.tasks.push(task);
             
             // this.addCommentsGetter(tasks);
             
-            this._tasks$$.next(tasks);
+            this._tasks$$.next(this.tasks);
         });
     }
     
     patch(id: number, task: ITask): void {
+        task = {
+            ...task,
+            updatedAt: new Date()
+        };
+        
         this.http.patch<ITask>(
             `${environment.backendURL}/tasks/${id}`,
             {
