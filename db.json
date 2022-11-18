@@ -62,7 +62,8 @@
       "createdAt": "2022-10-15T00:00:00.000Z",
       "name": "Test Task 1",
       "status": "todo",
-      "boardId": 1
+      "boardId": 1,
+      "deleted": true
     },
     {
       "id": 2,
@@ -72,18 +73,11 @@
       "boardId": 0
     },
     {
-      "id": 3,
-      "createdAt": "2022-10-15T00:00:00.000Z",
-      "name": "Test Task 3",
-      "status": "done",
-      "boardId": 1
-    },
-    {
       "id": 4,
       "createdAt": "2022-10-15T00:00:00.000Z",
       "name": "Test Task 4",
       "status": "done",
-      "boardId": 4
+      "boardId": 1
     },
     {
       "id": 5,
@@ -119,13 +113,6 @@
       "name": "Test Task 9",
       "status": "in-progress",
       "boardId": 4
-    },
-    {
-      "id": 10,
-      "createdAt": "2022-10-15T00:00:00.000Z",
-      "name": "Test Task 10",
-      "status": "in-progress",
-      "boardId": 1
     },
     {
       "id": 11,
@@ -239,6 +226,42 @@
       "boardId": 7,
       "createdAt": "2022-11-18T13:46:56.229Z",
       "id": 26
+    },
+    {
+      "name": "",
+      "status": "",
+      "boardId": 1,
+      "createdAt": "2022-11-18T15:20:57.673Z",
+      "id": 27
+    },
+    {
+      "name": "Екатерина Слепченко",
+      "status": "in-progress",
+      "boardId": 1,
+      "createdAt": "2022-11-18T15:34:32.851Z",
+      "id": 28,
+      "deleted": true
+    },
+    {
+      "name": "",
+      "status": "",
+      "boardId": 1,
+      "createdAt": "2022-11-18T15:34:37.822Z",
+      "id": 29
+    },
+    {
+      "name": "Екатерина Слепченко",
+      "status": "in-progress",
+      "boardId": 1,
+      "createdAt": "2022-11-18T15:34:54.376Z",
+      "id": 30
+    },
+    {
+      "name": "",
+      "status": "",
+      "boardId": 1,
+      "createdAt": "2022-11-18T15:36:03.574Z",
+      "id": 32
     }
   ],
   "comments": [
@@ -246,12 +269,6 @@
       "id": 0,
       "createdAt": "2022-10-15T00:00:00.000Z",
       "taskId": 1,
-      "text": "Test Comment 1"
-    },
-    {
-      "id": 1,
-      "createdAt": "2022-10-15T00:00:00.000Z",
-      "taskId": 3,
       "text": "Test Comment 1"
     },
     {
@@ -330,6 +347,22 @@
       "taskId": 25,
       "createdAt": "2022-11-18T13:50:31.239Z",
       "id": 16
+    },
+    {
+      "text": "Test Comment 1.1",
+      "createdAt": "2022-11-18T15:18:19.694Z",
+      "id": 17
+    },
+    {
+      "text": "Test Comment 1.1",
+      "createdAt": "2022-11-18T15:18:43.938Z",
+      "id": 18
+    },
+    {
+      "text": "Test Comment 1.1",
+      "taskId": 4,
+      "createdAt": "2022-11-18T15:35:07.922Z",
+      "id": 19
     }
   ]
 }

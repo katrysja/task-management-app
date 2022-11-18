@@ -18,7 +18,7 @@ export class TaskService {
     private readonly _tasks$$: BehaviorSubject<ITask[]> = new BehaviorSubject<ITask[]>([]);
     tasks$: Observable<ITask[]> = this._tasks$$.asObservable();
     
-    constructor(private readonly http: HttpClient, private readonly commetsService: CommentService) {
+    constructor(private readonly http: HttpClient, private readonly commentsService: CommentService) {
     }
     
     get tasks(): ITask[] {

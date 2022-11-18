@@ -90,7 +90,9 @@ export class BoardComponent implements OnInit {
         
         this.isModalVisible = false;
         
-        this.boardService.getById(this.id, true);
+        this.taskService.tasks$.subscribe(() => {
+            this.boardService.getById(this.id, true);
+        });
     }
     
     onCardDrop(task: ITask) {
@@ -112,6 +114,10 @@ export class BoardComponent implements OnInit {
         
         this.selectedTask = this.taskService.tasks[<number>task.id];
         this.isModalVisible = true;
+    
+        this.taskService.tasks$.subscribe(() => {
+            this.boardService.getById(this.id, true);
+        });
     }
     
     onArchiveClick(task: ITask) {
@@ -136,6 +142,10 @@ export class BoardComponent implements OnInit {
         if (task.id === this.selectedTask.id) {
             this.isModalVisible = false;
         }
+    
+        this.taskService.tasks$.subscribe(() => {
+            this.boardService.getById(this.id, true);
+        });
     }
     
     private updateCardStatus() {
