@@ -14,6 +14,7 @@ import { CommentService } from 'src/app/services/comment.service';
 export class TaskModalComponent implements OnInit, OnChanges {
     @Input('task')
     public task: ITask;
+   
     
     @Output('close') closeEventEmitter: EventEmitter<void> = new EventEmitter();
     @Output('save') saveEventEmitter: EventEmitter<ITask> = new EventEmitter();

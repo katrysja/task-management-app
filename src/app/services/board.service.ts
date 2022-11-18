@@ -97,7 +97,7 @@ export class BoardService {
     patch(id: number, board: IBoard): void {
         board = {
             ...board,
-            uopdatedAt: new Date()
+            updatedAt: new Date()
         };
         
         this.http.patch<IBoard>(

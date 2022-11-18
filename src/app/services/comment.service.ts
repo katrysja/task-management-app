@@ -46,6 +46,7 @@ export class CommentService {
             // this.tasks just a getter!
             const comments = this.comments;
             comments.push(comment);
+            console.log(comments.length);
             
             this._comments$$.next(comments);
         });

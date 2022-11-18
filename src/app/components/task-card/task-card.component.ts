@@ -9,6 +9,7 @@ import { ITask } from '../../interfaces/iTask';
 export class TaskCardComponent implements OnInit {
     @Input('task') task: ITask;
     
+    
     @Output('drop') dropEventEmitter: EventEmitter<ITask> = new EventEmitter();
     @Output('patch') patchEventEmitter: EventEmitter<ITask> = new EventEmitter();
     @Output('archive') archiveEventEmitter: EventEmitter<ITask> = new EventEmitter();
