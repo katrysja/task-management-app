@@ -68,7 +68,7 @@ export class DashboardComponent implements OnInit {
         
         this.boardService.delete(board.id);
 
-        if (board.id === this.selectedBoard.id) {
+        if (board.id === this.selectedBoard?.id) {
             this.isModalVisible = false;
         }
     }

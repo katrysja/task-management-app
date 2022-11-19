@@ -42,7 +42,6 @@
       "createdAt": "2022-11-18T13:25:39.494Z",
       "id": 6
     }
-
   ],
   "tasks": [
     {
@@ -193,34 +192,6 @@
       "boardId": 6,
       "createdAt": "2022-11-18T13:26:14.584Z",
       "id": 22
-    },
-    {
-      "name": "Test Task 18",
-      "status": "in-progress",
-      "boardId": 7,
-      "createdAt": "2022-11-18T13:45:48.411Z",
-      "id": 23
-    },
-    {
-      "name": "Екатерина Слепченко",
-      "status": "in-progress",
-      "boardId": 7,
-      "createdAt": "2022-11-18T13:46:19.249Z",
-      "id": 24
-    },
-    {
-      "name": "Екатерина Слепченко",
-      "status": "",
-      "boardId": 7,
-      "createdAt": "2022-11-18T13:46:27.604Z",
-      "id": 25
-    },
-    {
-      "name": "Екатерина Слепченко",
-      "status": "in-progress",
-      "boardId": 7,
-      "createdAt": "2022-11-18T13:46:56.229Z",
-      "id": 26
     },
     {
       "name": "",
