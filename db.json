@@ -41,13 +41,8 @@
       "description": "Test1",
       "createdAt": "2022-11-18T13:25:39.494Z",
       "id": 6
-    },
-    {
-      "name": "json.my",
-      "description": "Test",
-      "createdAt": "2022-11-18T13:45:24.431Z",
-      "id": 7
     }
+
   ],
   "tasks": [
     {
